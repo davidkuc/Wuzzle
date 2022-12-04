@@ -242,6 +242,12 @@ public class ChipsContainer : Debuggable
         return emptySlotsIndexList.ToArray();
     }
 
+    public void RespawnChips()
+    {
+        DespawnChips();
+        InitialSpawn();
+    }
+
     [ContextMenu("Spawn Chips")]
     public void InitialSpawn()
     {
