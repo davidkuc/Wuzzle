@@ -1,0 +1,15 @@
+{
+  "name": "com.pixelspaghetti.pixelspaghetti-tools",
+  "version": "1.0.0",
+  "displayName": "Pixel Spaghetti - Tools",
+  "description": "Usefal tools for starting a new project",
+  "unity": "2021.3",
+  "keywords": [
+    "Tools",
+    "Starter",
+    "Helpers"
+  ],
+  "author": {
+    "name": "Pixel Spaghetti"
+  }
+}

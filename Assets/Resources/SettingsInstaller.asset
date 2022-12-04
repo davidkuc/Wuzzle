@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add2f87bb5919f64fb23d0d63c4e3f02, type: 3}
+  m_Name: SettingsInstaller
+  m_EditorClassIdentifier: 
+  gameSettings:
+    Chip1Prefab: {fileID: 9106836752813519323, guid: 70cbb26bf2b20e74c9aa992b2c5802e6, type: 3}
+    Chip2Prefab: {fileID: 9106836752813519323, guid: dfe13e54c87a69f4483d6b0a0a994473, type: 3}
+    Chip3Prefab: {fileID: 9106836752813519323, guid: 3285c267e5c88f64db296db318db4371, type: 3}
+    Chip4Prefab: {fileID: 9106836752813519323, guid: 0a4c5e0b5f65eac42b7787d8295746a8, type: 3}
