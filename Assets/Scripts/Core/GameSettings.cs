@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class GameSettings
 {
+    [Header("Prefabs")]
     public GameObject orangeChipPrefab;
     public string orangeTransformGroupName = "orangeChips";
     [Space]
@@ -15,5 +16,9 @@ public class GameSettings
     [Space]
     public GameObject blueChipPrefab;
     public string blueTransformGroupName = "blueChips";
+    [Space(2)]
+    [Header("Tags")]
+    public string gridCellTag = "GridCell";
+    public string chipTag = "Chip";
 }
 

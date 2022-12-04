@@ -1,30 +1,72 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
 public class Draggable : Debuggable, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    private GameSettings gameSettings;
+    private Chip chip;
+    private ChipsContainer chipsContainer;
     private Camera camera;
     private Vector3 mousePositionOffset;
 
-    private bool isOverGridCell;
+    private GridCell gridCellAtDragStart;
     private GridCell currentGridCell;
+    private bool isBeingDragged;
+
+    public bool IsBeingDragged => isBeingDragged;
+
+    private void Awake()
+    {
+        chip = GetComponent<Chip>();
+    }
+
+    private void Start()
+    {
+        gridCellAtDragStart = chip.CurrentGridCell;
+        currentGridCell = chip.CurrentGridCell;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (isBeingDragged)
+            return;
+
+        if (collision.gameObject.CompareTag(gameSettings.chipTag))
+        {
+            var chip2 = collision.gameObject.GetComponent<Chip>();
+            if (chip2 != null && ChipsEqualInRank(chip, chip2))
+                chipsContainer.ConnectChips(chip, chip2);
+            else
+                GoBackToPreviousGridCell();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isOverGridCell = true;
-        currentGridCell = collision.GetComponent<GridCell>();
+        if (collision.CompareTag(gameSettings.gridCellTag))
+        {
+            currentGridCell = collision.GetComponent<GridCell>();
+
+            PrintDebugLog("Current Cell Changed!");
+        }
+
         PrintDebugLog("TriggerEnter!");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOverGridCell = false;
         PrintDebugLog("TriggerExit!");
     }
 
     [Inject]
-    public void Setup(Camera camera) => this.camera = camera;
+    public void Setup(GameSettings gameSettings, Camera camera, ChipsContainer chipsContainer)
+    {
+        this.gameSettings = gameSettings;
+        this.camera = camera;
+        this.chipsContainer = chipsContainer;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -38,11 +80,14 @@ public class Draggable : Debuggable, IPointerDownHandler, IPointerUpHandler, IBe
     }
 
     public void OnBeginDrag(PointerEventData eventData)
-    {     
+    {
+        isBeingDragged = true;
+        gridCellAtDragStart = chip.CurrentGridCell;
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {    
+    {
+        isBeingDragged = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -52,5 +97,9 @@ public class Draggable : Debuggable, IPointerDownHandler, IPointerUpHandler, IBe
     }
 
     private Vector3 GetMouseWorldPosition() => camera.ScreenToWorldPoint(Input.mousePosition);
+
+    private bool ChipsEqualInRank(Chip chip1, Chip chip2) => chip1.ChipColorRank == chip2.ChipColorRank;
+
+    private void GoBackToPreviousGridCell() => transform.position = gridCellAtDragStart.transform.position;
 }
 

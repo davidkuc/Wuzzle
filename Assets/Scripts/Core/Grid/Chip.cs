@@ -8,10 +8,20 @@ public class Chip : Debuggable
 
     private GridCellsContainer gridCellsContainer;
     private ChipsContainer gridItemsContainer;
+    private Draggable draggable;
 
     public ChipColorRanks ChipColorRank => chipRank;
 
     public int Index => index;
+
+    public bool IsBeingDragged => draggable.IsBeingDragged;
+
+    public GridCell CurrentGridCell => gridCellsContainer.GridCells[index];
+
+    private void Awake()
+    {
+        draggable = GetComponent<Draggable>();
+    }
 
     public void SetupChip(int gridIndex)
     {

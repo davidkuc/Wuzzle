@@ -25,8 +25,11 @@ public class ChipsContainer : MonoBehaviour
 
     public void ConnectChips(Chip chip1, Chip chip2)
     {
+        if (!ChipsEqualInRank(chip1, chip2))
+            return;
+
         // animations?
-        var indexArray = new int[2] { chip1.Index, chip2.Index};
+        var indexArray = new int[2] { chip1.Index, chip2.Index };
         var index = indexArray[Random.Range(0, 2)];
 
         if (chip1.ChipColorRank == ChipColorRanks.Orange)
@@ -44,7 +47,7 @@ public class ChipsContainer : MonoBehaviour
             //Instantiate higher lvl
             chipFactory.SpawnChip(ChipColorRanks.Blue, index);
         }
-        else
+        else if (chip1.ChipColorRank == ChipColorRanks.Blue)
         {
             // Both explode with a nice effect + bonus points!
         }
@@ -67,5 +70,7 @@ public class ChipsContainer : MonoBehaviour
             chipFactory.SpawnChip(ChipColorRanks.Orange, i);
         }
     }
+
+    private bool ChipsEqualInRank(Chip chip1, Chip chip2) => chip1.ChipColorRank == chip2.ChipColorRank;
 }
 

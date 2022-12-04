@@ -3,7 +3,7 @@ using UnityEngine;
 using Zenject;
 
 
-public class ChipFactory : MonoBehaviour
+public class ChipFactory : Debuggable
 {
     private Chip.OrangeChipPool orangePool;
     readonly private List<Chip> orangeChips = new List<Chip>();
@@ -57,6 +57,7 @@ public class ChipFactory : MonoBehaviour
 
     public void DespawnChip(Chip chip)
     {
+        PrintDebugLog("Despawning!");
         switch (chip.ChipColorRank)
         {
             case ChipColorRanks.Orange:
