@@ -19,6 +19,14 @@ public class ChipFactory : Debuggable
     private Chip.BlueChipPool bluePool;
     readonly private List<Chip> blueChips = new List<Chip>();
 
+    public List<Chip> OrangeChips => orangeChips;
+
+    public List<Chip> YellowChips => yellowChips;
+
+    public List<Chip> GreenChips => greenChips;
+
+    public List<Chip> BlueChips => blueChips;
+
     [Inject]
     public void Setup(Chip.OrangeChipPool orangePool,
                       Chip.YellowChipPool yellowPool,
@@ -31,30 +39,35 @@ public class ChipFactory : Debuggable
         this.bluePool = bluePool;
     }
 
-    public void SpawnChip(ChipColorRanks chipColorRank, int gridIndex)
+    public Chip SpawnChip(ChipColorRanks chipColorRank, int gridIndex)
     {
         Chip chip;
         switch (chipColorRank)
         {
             case ChipColorRanks.Orange:
                 chip = orangePool.Spawn(gridIndex);
-                orangeChips.Add(chip);
+                OrangeChips.Add(chip);
+                PrintDebugLog("Orange spawned!");
                 break;
             case ChipColorRanks.Yellow:
                 chip = yellowPool.Spawn(gridIndex);
-                yellowChips.Add(chip);
+                YellowChips.Add(chip);
                 break;
             case ChipColorRanks.Green:
                 chip = greenPool.Spawn(gridIndex);
-                greenChips.Add(chip);
+                GreenChips.Add(chip);
                 break;
             case ChipColorRanks.Blue:
                 chip = bluePool.Spawn(gridIndex);
-                blueChips.Add(chip);
+                BlueChips.Add(chip);
                 break;
             default:
+                chip = orangePool.Spawn(gridIndex);
+                OrangeChips.Add(chip);
                 break;
         }
+
+        return chip;
     }
 
     public void DespawnChip(Chip chip)
@@ -63,19 +76,19 @@ public class ChipFactory : Debuggable
         switch (chip.ChipColorRank)
         {
             case ChipColorRanks.Orange:
-                orangeChips.Remove(chip);
+                OrangeChips.Remove(chip);
                 orangePool.Despawn(chip);
                 break;
             case ChipColorRanks.Yellow:
-                yellowChips.Remove(chip);
+                YellowChips.Remove(chip);
                 yellowPool.Despawn(chip);
                 break;
             case ChipColorRanks.Green:
-                greenChips.Remove(chip);
+                GreenChips.Remove(chip);
                 greenPool.Despawn(chip);
                 break;
             case ChipColorRanks.Blue:
-                blueChips.Remove(chip);
+                BlueChips.Remove(chip);
                 bluePool.Despawn(chip);
                 break;
             default:
@@ -85,37 +98,37 @@ public class ChipFactory : Debuggable
 
     public void DespawnChips()
     {
-        foreach (var chip in orangeChips)
+        foreach (var chip in OrangeChips)
             orangePool.Despawn(chip);
 
-        for (int i = orangeChips.Count - 1; i > -1; i--)
-            orangeChips.RemoveAt(i);
+        for (int i = OrangeChips.Count - 1; i > -1; i--)
+            OrangeChips.RemoveAt(i);
 
-        PrintDebugLog($"orangeChips count ==> {orangeChips.Count}");
+        PrintDebugLog($"orangeChips count ==> {OrangeChips.Count}");
 
         //
 
-        foreach (var chip in yellowChips)
+        foreach (var chip in YellowChips)
             yellowPool.Despawn(chip);
 
-        for (int i = yellowChips.Count - 1; i > -1; i--)
-            yellowChips.RemoveAt(i);
+        for (int i = YellowChips.Count - 1; i > -1; i--)
+            YellowChips.RemoveAt(i);
 
         //
 
-        foreach (var chip in greenChips)
+        foreach (var chip in GreenChips)
             greenPool.Despawn(chip);
 
-        for (int i = greenChips.Count - 1; i > -1; i--)
-            greenChips.RemoveAt(i);
+        for (int i = GreenChips.Count - 1; i > -1; i--)
+            GreenChips.RemoveAt(i);
 
         //
 
-        foreach (var chip in blueChips)
+        foreach (var chip in BlueChips)
             bluePool.Despawn(chip);
 
-        for (int i = blueChips.Count - 1; i > -1; i--)
-            blueChips.RemoveAt(i);
+        for (int i = BlueChips.Count - 1; i > -1; i--)
+            BlueChips.RemoveAt(i);
     }
 }
 
