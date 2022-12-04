@@ -16,6 +16,7 @@ public class GameSceneInstaller : MonoInstaller
         Container.Bind<GridCellsContainer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<ChipsContainer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<ChipFactory>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<GameAudio>().FromComponentInHierarchy().AsSingle().NonLazy();
 
         Container.BindMemoryPool<Chip, Chip.OrangeChipPool>().WithInitialSize(25)
         .FromComponentInNewPrefab(gameSettings.orangeChipPrefab).UnderTransformGroup(gameSettings.orangeTransformGroupName);

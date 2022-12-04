@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugLogs: 0
   index: 5
-  chipRank: 0
+  chipColorRank: 0
 --- !u!4 &743578774
 Transform:
   m_ObjectHideFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugLogs: 0
   index: 0
-  chipRank: 0
+  chipColorRank: 0
 --- !u!4 &811919535
 Transform:
   m_ObjectHideFlags: 0
@@ -623,6 +623,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &383456761539772845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739742131288397836, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302235911353205834, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511598930139408726, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
+      propertyPath: orangeSpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e7d3319fcd0a47d47a93bb9ea1fbf465, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d35f07244ad11a46967852a9f80051e, type: 3}
 --- !u!1001 &1385287171360672305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -640,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 743578773}
     - target: {fileID: 1339762281457932370, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
       propertyPath: showDebugLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1385287171800156408, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
       propertyPath: m_Name

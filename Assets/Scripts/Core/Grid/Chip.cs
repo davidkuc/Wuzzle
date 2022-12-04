@@ -5,15 +5,15 @@ using Zenject;
 public class Chip : Debuggable
 {
     [SerializeField] private int index;
-    [SerializeField] private ChipColorRanks chipRank;
+    [SerializeField] private ChipColorRanks chipColorRank;
 
     private GridCellsContainer gridCellsContainer;
-    private ChipsContainer gridItemsContainer;
+    private ChipsContainer chipsContainer;
     private Draggable draggable;
     private ChipAnimations chipAnimations;
-    private GameObject spriteGO;
+    private GameAudio gameAudio;
 
-    public ChipColorRanks ChipColorRank => chipRank;
+    public ChipColorRanks ChipColorRank => chipColorRank;
 
     public int Index => index;
 
@@ -23,6 +23,8 @@ public class Chip : Debuggable
 
     private void OnEnable()
     {
+        if (!chipsContainer.IsFirstSpawn && chipColorRank == ChipColorRanks.Orange)
+            gameAudio.PlayOrangeSpawnSFX();
     }
 
     private void OnDisable()
@@ -35,7 +37,6 @@ public class Chip : Debuggable
     {
         draggable = GetComponent<Draggable>();
         chipAnimations = GetComponent<ChipAnimations>();
-        spriteGO = transform.Find("sprite").gameObject;
     }
 
     public void SetupChip(int gridIndex)
@@ -49,10 +50,11 @@ public class Chip : Debuggable
     public void DebugSetPosition() => SetupChip(Index);
 
     [Inject]
-    public void Setup(GridCellsContainer gridCellsContainer, ChipsContainer gridItemsContainer)
+    public void Setup(GridCellsContainer gridCellsContainer, ChipsContainer gridItemsContainer, GameAudio gameAudio)
     {
         this.gridCellsContainer = gridCellsContainer;
-        this.gridItemsContainer = gridItemsContainer;
+        this.chipsContainer = gridItemsContainer;
+        this.gameAudio = gameAudio;
     }
 
     public void OnChipSpawn()

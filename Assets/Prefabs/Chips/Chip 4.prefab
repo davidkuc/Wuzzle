@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugLogs: 0
   index: 5
-  chipRank: 3
+  chipColorRank: 3
 --- !u!50 &3254526348233467678
 Rigidbody2D:
   serializedVersion: 4

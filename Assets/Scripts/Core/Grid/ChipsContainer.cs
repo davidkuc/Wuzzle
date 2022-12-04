@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -11,16 +10,32 @@ public class ChipsContainer : MonoBehaviour
 
     private GridCellsContainer gridCellsContainer;
     private ChipFactory chipFactory;
+    private GameAudio gameAudio;
+
+    private bool isFirstSpawn = true;
 
     private Chip[] chips;
 
     public Chip[] Chips => chips;
 
+    public bool IsFirstSpawn => isFirstSpawn;
+
+    private void OnEnable() => isFirstSpawn = true;
+
+    private void OnDisable() => isFirstSpawn = true;
+
+    //
+    private void Start()
+    {
+        gameAudio.PlayGameStartSFX();
+    }
+
     [Inject]
-    public void Setup(GridCellsContainer gridCellsContainer, ChipFactory chipFactory)
+    public void Setup(GridCellsContainer gridCellsContainer, ChipFactory chipFactory, GameAudio gameAudio)
     {
         this.gridCellsContainer = gridCellsContainer;
         this.chipFactory = chipFactory;
+        this.gameAudio = gameAudio;
     }
 
     public void ConnectChips(Chip chip1, Chip chip2)
@@ -28,27 +43,29 @@ public class ChipsContainer : MonoBehaviour
         if (!ChipsEqualInRank(chip1, chip2))
             return;
 
-        // animations?
         var indexArray = new int[2] { chip1.Index, chip2.Index };
-        var index = indexArray[Random.Range(0, 2)];
+        var gridIndex = indexArray[Random.Range(0, 2)];
 
         if (chip1.ChipColorRank == ChipColorRanks.Orange)
         {
-            //Instantiate higher lvl
-            chipFactory.SpawnChip(ChipColorRanks.Yellow, index);
+            chipFactory.SpawnChip(ChipColorRanks.Yellow, gridIndex);
+
+            if (!IsFirstSpawn)
+                gameAudio.PlayConnectSFX();
         }
         else if (chip1.ChipColorRank == ChipColorRanks.Yellow)
         {
-            //Instantiate higher lvl
-            chipFactory.SpawnChip(ChipColorRanks.Green, index);
+            chipFactory.SpawnChip(ChipColorRanks.Green, gridIndex);
+            gameAudio.PlayConnectSFX();
         }
         else if (chip1.ChipColorRank == ChipColorRanks.Green)
         {
-            //Instantiate higher lvl
-            chipFactory.SpawnChip(ChipColorRanks.Blue, index);
+            chipFactory.SpawnChip(ChipColorRanks.Blue, gridIndex);
+            gameAudio.PlayConnectSFX();
         }
         else if (chip1.ChipColorRank == ChipColorRanks.Blue)
         {
+            gameAudio.PlayBlueConnectSFX();
             // Both explode with a nice effect + bonus points!
         }
 
@@ -69,10 +86,15 @@ public class ChipsContainer : MonoBehaviour
         {
             chipFactory.SpawnChip(ChipColorRanks.Orange, i);
         }
+        isFirstSpawn = false;
     }
 
     [ContextMenu("Despawn Chips")]
-    public void DespawnChips() => chipFactory.DespawnChips();
+    public void DespawnChips()
+    {
+        chipFactory.DespawnChips();
+        isFirstSpawn = true;
+    }
 
     private bool ChipsEqualInRank(Chip chip1, Chip chip2) => chip1.ChipColorRank == chip2.ChipColorRank;
 }
