@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
-
-public class Draggable : Debuggable
+public class Draggable : Debuggable, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private Camera camera;
     private Vector3 mousePositionOffset;
@@ -19,28 +19,36 @@ public class Draggable : Debuggable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOverGridCell= false;
+        isOverGridCell = false;
         PrintDebugLog("TriggerExit!");
     }
 
     [Inject]
     public void Setup(Camera camera) => this.camera = camera;
 
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         PrintDebugLog("MouseDown!");
         mousePositionOffset = transform.position - GetMouseWorldPosition();
     }
 
-    private void OnMouseDrag()
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        transform.position = currentGridCell.transform.position;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {     
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {    
+    }
+
+    public void OnDrag(PointerEventData eventData)
     {
         PrintDebugLog("MouseDrag!");
         transform.position = GetMouseWorldPosition() + mousePositionOffset;
-    }
-
-    private void OnMouseUp()
-    {
-        transform.position = currentGridCell.transform.position;
     }
 
     private Vector3 GetMouseWorldPosition() => camera.ScreenToWorldPoint(Input.mousePosition);
