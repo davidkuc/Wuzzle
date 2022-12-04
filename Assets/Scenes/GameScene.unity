@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 811919534}
   - component: {fileID: 811919536}
   - component: {fileID: 811919537}
+  - component: {fileID: 811919538}
   m_Layer: 0
   m_Name: GridItem
   m_TagString: Untagged
@@ -401,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3538593acc30b1b49ae083d928d3ef24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDebugLogs: 1
+  showDebugLogs: 0
 --- !u!60 &811919537
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -432,6 +433,27 @@ PolygonCollider2D:
       - {x: 0.009819984, y: -0.2521578}
       - {x: 0.3636834, y: -0.0144738555}
       - {x: 0.16330417, y: 0.15961593}
+--- !u!50 &811919538
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811919533}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1682461567
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +538,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2074782568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3225663825384394487, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
+  m_PrefabInstance: {fileID: 1385287171360672305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &2074782571
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074782568}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.000675438, y: 0.11548561}
+      - {x: -0.2455082, y: -0.020513803}
+      - {x: 0.0026913285, y: -0.16304937}
+      - {x: 0.24606031, y: -0.02516687}
+      - {x: 0.10271044, y: 0.059814513}
 --- !u!1001 &1385287171360672305
 PrefabInstance:
   m_ObjectHideFlags: 0
