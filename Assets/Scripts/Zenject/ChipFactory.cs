@@ -17,16 +17,6 @@ public class ChipFactory : MonoBehaviour
     private Chip.BlueChipPool bluePool;
     readonly private List<Chip> blueChips = new List<Chip>();
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
     [Inject]
     public void Setup(Chip.OrangeChipPool orangePool,
                       Chip.YellowChipPool yellowPool,

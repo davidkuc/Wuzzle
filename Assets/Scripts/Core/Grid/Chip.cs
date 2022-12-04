@@ -13,10 +13,14 @@ public class Chip : Debuggable
 
     public int Index => index;
 
-    public void SetPosition(int gridIndex) => transform.position = gridCellsContainer.GridCells[gridIndex].transform.position;
+    public void SetupChip(int gridIndex)
+    {
+        transform.position = gridCellsContainer.GridCells[gridIndex].transform.position;
+        index = gridIndex;
+    }
 
     [ContextMenu("Debug Set Position")]
-    public void DebugSetPosition() => SetPosition(Index);
+    public void DebugSetPosition() => SetupChip(Index);
 
     [Inject]
     public void Setup(GridCellsContainer gridCellsContainer, ChipsContainer gridItemsContainer)
@@ -54,7 +58,7 @@ public class Chip : Debuggable
         protected override void Reinitialize(int gridIndex, Chip item)
         {
             base.Reinitialize(gridIndex, item);
-            item.SetPosition(gridIndex);
+            item.SetupChip(gridIndex);
         }
     }
 
@@ -63,7 +67,7 @@ public class Chip : Debuggable
         protected override void Reinitialize(int gridIndex, Chip item)
         {
             base.Reinitialize(gridIndex, item);
-            item.SetPosition(gridIndex);
+            item.SetupChip(gridIndex);
         }
     }
 
@@ -72,7 +76,7 @@ public class Chip : Debuggable
         protected override void Reinitialize(int gridIndex, Chip item)
         {
             base.Reinitialize(gridIndex, item);
-            item.SetPosition(gridIndex);
+            item.SetupChip(gridIndex);
         }
     }
 
@@ -81,7 +85,7 @@ public class Chip : Debuggable
         protected override void Reinitialize(int gridIndex, Chip item)
         {
             base.Reinitialize(gridIndex, item);
-            item.SetPosition(gridIndex);
+            item.SetupChip(gridIndex);
         }
     }
 }

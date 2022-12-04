@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &743578773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &811919534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showDebugLogs: 0
-  index: 5
+  index: 0
   chipRank: 0
 --- !u!4 &811919535
 Transform:
@@ -478,10 +478,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1385287171645711466, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
-      propertyPath: m_Name
-      value: GridCellsContainer
-      objectReference: {fileID: 0}
+    - target: {fileID: 396583880429406948, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
+      propertyPath: chip1
+      value: 
+      objectReference: {fileID: 811919534}
+    - target: {fileID: 396583880429406948, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
+      propertyPath: chip2
+      value: 
+      objectReference: {fileID: 743578773}
     - target: {fileID: 1385287171800156408, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
       propertyPath: m_Name
       value: Grid

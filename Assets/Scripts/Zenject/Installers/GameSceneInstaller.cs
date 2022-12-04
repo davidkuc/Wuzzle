@@ -9,16 +9,13 @@ public class GameSceneInstaller : MonoInstaller
     public void Setup(GameSettings gameSettings)
     {
        this.gameSettings = gameSettings;
-        //Debug.Log($"GameSceneInstaller - Game Settings null? ==> {gameSettings == null}");
     }
 
     public override void InstallBindings()
     {
         Container.Bind<GridCellsContainer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<ChipsContainer>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-        //        Container.BindMemoryPool<GridItem, GridItem.Pool>().WithInitialSize(40).
-        //.UnderTransformGroup(gameSettings.orangeTransformGroupName);
+        Container.Bind<ChipFactory>().FromComponentInHierarchy().AsSingle().NonLazy();
 
         Container.BindMemoryPool<Chip, Chip.OrangeChipPool>().WithInitialSize(20)
         .FromComponentInNewPrefab(gameSettings.orangeChipPrefab).UnderTransformGroup(gameSettings.orangeTransformGroupName);

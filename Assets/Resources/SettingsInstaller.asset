@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: SettingsInstaller
   m_EditorClassIdentifier: 
   gameSettings:
-    Chip1Prefab: {fileID: 9106836752813519323, guid: 70cbb26bf2b20e74c9aa992b2c5802e6, type: 3}
-    Chip2Prefab: {fileID: 9106836752813519323, guid: dfe13e54c87a69f4483d6b0a0a994473, type: 3}
-    Chip3Prefab: {fileID: 9106836752813519323, guid: 3285c267e5c88f64db296db318db4371, type: 3}
-    Chip4Prefab: {fileID: 9106836752813519323, guid: 0a4c5e0b5f65eac42b7787d8295746a8, type: 3}
+    orangeChipPrefab: {fileID: 9106836752813519323, guid: 70cbb26bf2b20e74c9aa992b2c5802e6, type: 3}
+    orangeTransformGroupName: orangeChips
+    yellowChipPrefab: {fileID: 9106836752813519323, guid: dfe13e54c87a69f4483d6b0a0a994473, type: 3}
+    yellowTransformGroupName: yellowChips
+    greenChipPrefab: {fileID: 9106836752813519323, guid: 3285c267e5c88f64db296db318db4371, type: 3}
+    greenTransformGroupName: greenChips
+    blueChipPrefab: {fileID: 9106836752813519323, guid: 0a4c5e0b5f65eac42b7787d8295746a8, type: 3}
+    blueTransformGroupName: blueChips
