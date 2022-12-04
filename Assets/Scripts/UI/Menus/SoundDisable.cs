@@ -12,8 +12,12 @@ public class SoundDisable : MonoBehaviour
     [SerializeField] Sprite buttonOn;
     [SerializeField] Sprite buttonOff;
     bool delay = false;
+
+    AudioManager audio ;
+
     private void Awake()
     {
+        audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         text = transform.GetComponentInChildren<TextMeshProUGUI>();
         image = transform.Find("Image").GetComponent<Image>();
         button = transform.GetComponent<Button>();
@@ -31,12 +35,14 @@ public class SoundDisable : MonoBehaviour
             text.color = new Color32(65,255,110,255);
             text.text = "sound on";
             image.sprite = buttonOn;
+            audio.MuteOffAudio();
         }
         if(index == 1)
         {
             text.color = new Color32(255, 70, 70, 255);
             text.text = "sound off";
             image.sprite = buttonOff;
+            audio.MuteAudio();
         }
 
         index++;
