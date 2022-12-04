@@ -1,20 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CircleGenerator : MonoBehaviour
 {
     [SerializeField] GameObject mainPrefab;
+    [SerializeField] private Vector2 snowScale;
     float xStage;
     float yStage;
+
     private void Start()
     {
         for (int i = 0; i < 400; i++)
             GenerateCircles();
         StartCoroutine(ChangePosition());
     }
-    
+
     public void GenerateCircles()
     {
         byte r = (byte)(160);
@@ -22,17 +23,16 @@ public class CircleGenerator : MonoBehaviour
         byte b = (byte)(160);
 
         Vector2 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        xStage = stageDimensions.x + 800;
-        yStage = stageDimensions.y + 400;
+        xStage = stageDimensions.x;
+        yStage = stageDimensions.y;
 
         GameObject gameObject = Instantiate(mainPrefab);
         gameObject.transform.SetParent(transform);
         gameObject.name = "Circle";
-        gameObject.transform.localPosition = new Vector2(Random.Range(-xStage,xStage), Random.Range(-yStage, yStage));
-        float scale = Random.Range(1.2f, 2f); ;
+        gameObject.transform.localPosition = new Vector2(Random.Range(-xStage, xStage), Random.Range(-yStage, yStage));
+        float scale = Random.Range(snowScale.x, snowScale.y); ;
         gameObject.transform.localScale = new Vector2(scale, scale);
-        gameObject.GetComponent<Image>().color = new Color32(r,g,b,255);
-
+        gameObject.GetComponent<Image>().color = new Color32(r, g, b, 255);
     }
     IEnumerator ChangePosition()
     {
@@ -44,18 +44,18 @@ public class CircleGenerator : MonoBehaviour
         int maxIndex = transform.childCount;
         int count = 0;
 
-        float xSpeed= 0;
-        float ySpeed= 0;
+        float xSpeed = 0;
+        float ySpeed = 0;
 
         bool isDirectionInit = false;
-        while(true)
+        while (true)
         {
             if (!isDirectionInit)
             {
-               xSpeed = 20;
-               ySpeed = -50 - Random.Range(0,20);
+                xSpeed = 20;
+                ySpeed = -50 - Random.Range(0, 20);
 
-               if (count == maxIndex-1) isDirectionInit = true;
+                if (count == maxIndex - 1) isDirectionInit = true;
             }
 
             if (transform.GetChild(count).transform.localPosition.y < -yStage)

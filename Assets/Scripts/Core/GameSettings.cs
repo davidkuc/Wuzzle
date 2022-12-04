@@ -20,5 +20,8 @@ public class GameSettings
     [Header("Tags")]
     public string gridCellTag = "GridCell";
     public string chipTag = "Chip";
+    [Space(2)]
+    [Header("Scenes")]
+    public string gameSceneName = "GameScene";
 }
 

@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 public class SoundDisable : MonoBehaviour
 {
     TextMeshProUGUI text;
@@ -13,7 +13,7 @@ public class SoundDisable : MonoBehaviour
     [SerializeField] Sprite buttonOff;
     bool delay = false;
 
-    AudioManager audio ;
+    AudioManager audio;
 
     private void Awake()
     {
@@ -30,14 +30,14 @@ public class SoundDisable : MonoBehaviour
     {
         if (delay) return;
 
-        if(index == 0)
+        if (index == 0)
         {
-            text.color = new Color32(65,255,110,255);
+            text.color = new Color32(65, 255, 110, 255);
             text.text = "sound on";
             image.sprite = buttonOn;
             audio.MuteOffAudio();
         }
-        if(index == 1)
+        if (index == 1)
         {
             text.color = new Color32(255, 70, 70, 255);
             text.text = "sound off";

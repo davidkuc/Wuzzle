@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +27,7 @@ public class HowToButton : MonoBehaviour
         table1.SetActive(true);
         yield return new WaitForSeconds(2f);
         table1.SetActive(false);
-        
+
         table2.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         table2.SetActive(false);

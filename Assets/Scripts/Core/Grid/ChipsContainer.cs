@@ -49,6 +49,7 @@ public class ChipsContainer : Debuggable
     private void Start()
     {
         gameAudio.PlayGameStartSFX();
+        InitialSpawn();
         //spawningCoroutine = StartCoroutine(SpawnOrangeChipsInEmptyGridCells());
     }
 
