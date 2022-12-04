@@ -4,9 +4,16 @@ using UnityEngine;
 [Serializable]
 public class GameSettings
 {
-    public GameObject Chip1Prefab;
-    public GameObject Chip2Prefab;
-    public GameObject Chip3Prefab;
-    public GameObject Chip4Prefab;
+    public GameObject orangeChipPrefab;
+    public string orangeTransformGroupName = "orangeChips";
+    [Space]
+    public GameObject yellowChipPrefab;
+    public string yellowTransformGroupName = "yellowChips";
+    [Space]
+    public GameObject greenChipPrefab;
+    public string greenTransformGroupName = "greenChips";
+    [Space]
+    public GameObject blueChipPrefab;
+    public string blueTransformGroupName = "blueChips";
 }
 
