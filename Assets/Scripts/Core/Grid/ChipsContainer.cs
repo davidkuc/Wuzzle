@@ -71,6 +71,9 @@ public class ChipsContainer : MonoBehaviour
         }
     }
 
+    [ContextMenu("Despawn Chips")]
+    public void DespawnChips() => chipFactory.DespawnChips();
+
     private bool ChipsEqualInRank(Chip chip1, Chip chip2) => chip1.ChipColorRank == chip2.ChipColorRank;
 }
 

@@ -638,6 +638,10 @@ PrefabInstance:
       propertyPath: chip2
       value: 
       objectReference: {fileID: 743578773}
+    - target: {fileID: 1339762281457932370, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
+      propertyPath: showDebugLogs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1385287171800156408, guid: 820d9325f2da2d0428929b05abb99a27, type: 3}
       propertyPath: m_Name
       value: Grid

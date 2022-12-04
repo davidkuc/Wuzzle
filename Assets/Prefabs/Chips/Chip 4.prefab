@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3254526348233467678}
   - component: {fileID: -3326372376760658296}
   - component: {fileID: 3814481690445174355}
+  - component: {fileID: 1994467736102754051}
   m_Layer: 0
   m_Name: Chip 4
   m_TagString: Chip
@@ -115,6 +116,24 @@ PolygonCollider2D:
       - {x: -0.0069228113, y: -0.19342643}
       - {x: 0.28993127, y: -0.002123177}
       - {x: 0.107102394, y: 0.12639385}
+--- !u!114 &1994467736102754051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106836752813519323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00d5b7c5b90e2e46884f2566cad4fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugLogs: 0
+  spawnAnimTime: 0.8
+  targetScale: {x: 1.1, y: 1.1}
+  dragAnimTime: 0.4
+  connectEnterAnimTime: 0.3
+  connectExitAnimTime: 1
 --- !u!1 &9106836752912536704
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +145,7 @@ GameObject:
   - component: {fileID: 9106836752912536705}
   - component: {fileID: 9106836752912536718}
   m_Layer: 0
-  m_Name: Square
+  m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

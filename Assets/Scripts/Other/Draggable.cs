@@ -83,11 +83,13 @@ public class Draggable : Debuggable, IPointerDownHandler, IPointerUpHandler, IBe
     {
         isBeingDragged = true;
         gridCellAtDragStart = chip.CurrentGridCell;
+        chip.OnDragStart();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         isBeingDragged = false;
+        chip.OnDragEnd();
     }
 
     public void OnDrag(PointerEventData eventData)

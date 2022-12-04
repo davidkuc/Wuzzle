@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,8 @@ public class Chip : Debuggable
     private GridCellsContainer gridCellsContainer;
     private ChipsContainer gridItemsContainer;
     private Draggable draggable;
+    private ChipAnimations chipAnimations;
+    private GameObject spriteGO;
 
     public ChipColorRanks ChipColorRank => chipRank;
 
@@ -18,15 +21,28 @@ public class Chip : Debuggable
 
     public GridCell CurrentGridCell => gridCellsContainer.GridCells[index];
 
+    private void OnEnable()
+    {
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+
     private void Awake()
     {
         draggable = GetComponent<Draggable>();
+        chipAnimations = GetComponent<ChipAnimations>();
+        spriteGO = transform.Find("sprite").gameObject;
     }
 
     public void SetupChip(int gridIndex)
     {
         transform.position = gridCellsContainer.GridCells[gridIndex].transform.position;
         index = gridIndex;
+        OnChipSpawn();
     }
 
     [ContextMenu("Debug Set Position")]
@@ -39,28 +55,19 @@ public class Chip : Debuggable
         this.gridItemsContainer = gridItemsContainer;
     }
 
-    [ContextMenu("Check Connections")]
-    private void CheckForConnections()
+    public void OnChipSpawn()
     {
-        bool connected;
-        int checkingIndex = Index;
-
-        if (checkingIndex - 1 > -1)
-            CheckNeighbourChipColor(checkingIndex - 1, out connected);
-
-        PrintDebugLog($"Checking index ==> {checkingIndex}");
+        chipAnimations.ConnectAnimation();
     }
 
-    private void CheckNeighbourChipColor(int index, out bool connected)
+    public void OnDragStart()
     {
-        var neighbourGridCell = gridItemsContainer.Chips[index];
-        if (chipRank == neighbourGridCell.ChipColorRank)
-        {
-            gridItemsContainer.ConnectChips(this, neighbourGridCell);
-            connected = true;
-        }
-        else
-            connected = false;
+        chipAnimations.DragStartAnimation();
+    }
+
+    public void OnDragEnd()
+    {
+        chipAnimations.DragEndAnimation();
     }
 
     public class OrangeChipPool : MonoMemoryPool<int, Chip>

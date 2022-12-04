@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Zenject.Asteroids;
 
 
 public class ChipFactory : Debuggable
@@ -79,6 +81,41 @@ public class ChipFactory : Debuggable
             default:
                 break;
         }
+    }
+
+    public void DespawnChips()
+    {
+        foreach (var chip in orangeChips)
+            orangePool.Despawn(chip);
+
+        for (int i = orangeChips.Count - 1; i > -1; i--)
+            orangeChips.RemoveAt(i);
+
+        PrintDebugLog($"orangeChips count ==> {orangeChips.Count}");
+
+        //
+
+        foreach (var chip in yellowChips)
+            yellowPool.Despawn(chip);
+
+        for (int i = yellowChips.Count - 1; i > -1; i--)
+            yellowChips.RemoveAt(i);
+
+        //
+
+        foreach (var chip in greenChips)
+            greenPool.Despawn(chip);
+
+        for (int i = greenChips.Count - 1; i > -1; i--)
+            greenChips.RemoveAt(i);
+
+        //
+
+        foreach (var chip in blueChips)
+            bluePool.Despawn(chip);
+
+        for (int i = blueChips.Count - 1; i > -1; i--)
+            blueChips.RemoveAt(i);
     }
 }
 
