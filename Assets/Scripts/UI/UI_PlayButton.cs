@@ -1,22 +1,26 @@
 using UnityEngine;
+using Wuzzle.Managers;
 using Zenject;
 
-public class UI_PlayButton : MonoBehaviour
+namespace Wuzzle.UI.Buttons
 {
-    private LevelHandler levelHandler;
-    private UI_MainMenu uI_MainMenu;
-
-    public void StartGame()
+    public class UI_PlayButton : MonoBehaviour
     {
-        levelHandler.LoadGameScene();
-        uI_MainMenu.gameObject.SetActive(false);
-    }
+        private LevelManager levelManager;
+        private UI_MainMenu uI_MainMenu;
 
-    [Inject]
-    public void Setup(LevelHandler levelHandler, UI_MainMenu uI_MainMenu)
-    {
-        this.levelHandler = levelHandler;
-        this.uI_MainMenu = uI_MainMenu;
+        public void StartGame()
+        {
+            levelManager.LoadGameScene();
+            uI_MainMenu.gameObject.SetActive(false);
+        }
+
+        [Inject]
+        public void Setup(LevelManager levelManager, UI_MainMenu uI_MainMenu)
+        {
+            this.levelManager = levelManager;
+            this.uI_MainMenu = uI_MainMenu;
+        }
     }
 }
 

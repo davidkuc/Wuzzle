@@ -1,6 +1,8 @@
 using UnityEngine;
-using Zenject;
 
-public class UI_MainMenu : MonoBehaviour
+namespace Wuzzle.UI
 {
+    public class UI_MainMenu : MonoBehaviour
+    {
+    }
 }

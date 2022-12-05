@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExitButton : MonoBehaviour
+namespace Wuzzle.UI.Buttons
 {
-    Button button;
-    private void Start()
+    public class ExitButton : MonoBehaviour
     {
-        button = transform.GetComponent<Button>();
-        button.onClick.AddListener(Exit);
-    }
-    void Exit()
-    {
-        Application.Quit();
+        Button button;
+        private void Start()
+        {
+            button = transform.GetComponent<Button>();
+            button.onClick.AddListener(Exit);
+        }
+        void Exit()
+        {
+            Application.Quit();
+        }
     }
 }

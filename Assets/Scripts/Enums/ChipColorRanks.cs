@@ -1,8 +1,11 @@
-public enum ChipColorRanks
+namespace Wuzzle.Enums
 {
-    Orange,
-    Yellow,
-    Green,
-    Blue
+    public enum ChipColorRanks
+    {
+        Orange,
+        Yellow,
+        Green,
+        Blue
+    }
 }
 

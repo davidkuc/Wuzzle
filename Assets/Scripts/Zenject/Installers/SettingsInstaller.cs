@@ -1,14 +1,14 @@
 using UnityEngine;
+using Wuzzle.Settings;
 using Zenject;
-using Zenject.Asteroids;
 
-[CreateAssetMenu(fileName = "SettingsInstaller", menuName = "Installers/SettingsInstaller")]
-public class SettingsInstaller : ScriptableObjectInstaller<SettingsInstaller>
+namespace Wuzzle.Installers
 {
-    [SerializeField] private GameSettings gameSettings;
-
-    public override void InstallBindings()
+    [CreateAssetMenu(fileName = "SettingsInstaller", menuName = "Installers/SettingsInstaller")]
+    public class SettingsInstaller : ScriptableObjectInstaller<SettingsInstaller>
     {
-        Container.BindInstance(gameSettings).AsSingle().NonLazy();
+        [SerializeField] private GameSettings gameSettings;
+
+        public override void InstallBindings() => Container.BindInstance(gameSettings).AsSingle().NonLazy();
     }
 }

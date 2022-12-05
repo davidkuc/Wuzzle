@@ -1,30 +1,30 @@
-using System;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-
-public class GridCell : Debuggable
+namespace Wuzzle.Core
 {
-    [SerializeField] private int index;
-    private Chip chipOnGridCell;
+    public class GridCell : Debuggable
+    {
+        [SerializeField] private int index;
+        private Chip chipOnGridCell;
 
-    public bool HasChip => chipOnGridCell != null;
+        public bool HasChip => chipOnGridCell != null;
 
-    public int Index => index; 
+        public int Index => index;
 
-    public void SetIndex(int index) => this.index = index;
+        public void SetIndex(int index) => this.index = index;
 
-    public void AttachChip(Chip spawnedChip) => chipOnGridCell = spawnedChip;
+        public void AttachChip(Chip spawnedChip) => chipOnGridCell = spawnedChip;
 
-    public void UnattachChip() => chipOnGridCell = null;
+        public void UnattachChip() => chipOnGridCell = null;
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Handles.Label(transform.position, Index.ToString());
-        Handles.color = Color.magenta;
-    }
+        private void OnDrawGizmos()
+        {
+            Handles.Label(transform.position, Index.ToString());
+            Handles.color = Color.magenta;
+        }
 #endif
+    }
 }
 

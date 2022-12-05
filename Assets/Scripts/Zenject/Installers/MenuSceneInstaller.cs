@@ -1,10 +1,15 @@
+using Wuzzle.Managers;
+using Wuzzle.UI;
 using Zenject;
 
-public class MenuSceneInstaller : MonoInstaller
+namespace Wuzzle.Installers
 {
-    public override void InstallBindings()
+    public class MenuSceneInstaller : MonoInstaller
     {
-        Container.Bind<LevelHandler>().FromComponentInHierarchy().AsSingle().NonLazy();
-        Container.Bind<UI_MainMenu>().FromComponentInHierarchy().AsSingle().NonLazy();
+        public override void InstallBindings()
+        {
+            Container.Bind<LevelManager>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<UI_MainMenu>().FromComponentInHierarchy().AsSingle().NonLazy();
+        }
     }
 }

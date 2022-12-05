@@ -22,9 +22,9 @@ namespace Zenject.Asteroids
     {
         public ShipSettings Ship;
         public AsteroidSettings Asteroid;
-        public AudioHandler.Settings AudioHandler;
+        //public AudioHandler.Settings AudioHandler;
         public GameInstaller.Settings GameInstaller;
-
+        
         // We use nested classes here to group related settings together
         [Serializable]
         public class ShipSettings
@@ -48,7 +48,7 @@ namespace Zenject.Asteroids
             Container.BindInstance(Ship.StateStarting);
             Container.BindInstance(Asteroid.Spawner);
             Container.BindInstance(Asteroid.General);
-            Container.BindInstance(AudioHandler);
+            //Container.BindInstance(AudioHandler);
             Container.BindInstance(GameInstaller);
         }
     }

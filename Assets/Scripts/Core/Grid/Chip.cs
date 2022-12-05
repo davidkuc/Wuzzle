@@ -1,110 +1,109 @@
-using System;
 using UnityEngine;
+using Wuzzle.Animations;
+using Wuzzle.Audio;
+using Wuzzle.Enums;
 using Zenject;
 
-public class Chip : Debuggable
+namespace Wuzzle.Core
 {
-    [SerializeField] private int index;
-    [SerializeField] private ChipColorRanks chipColorRank;
-
-    private GridCellsContainer gridCellsContainer;
-    private ChipsContainer chipsContainer;
-    private Draggable draggable;
-    private ChipAnimations chipAnimations;
-    private GameAudio gameAudio;
-
-    public ChipColorRanks ChipColorRank => chipColorRank;
-
-    public int Index => index;
-
-    public bool IsBeingDragged => draggable.IsBeingDragged;
-
-    public GridCell CurrentGridCell => gridCellsContainer.GridCells[index];
-
-    private void OnEnable()
+    public class Chip : Debuggable
     {
-        if (!chipsContainer.IsFirstSpawn && chipColorRank == ChipColorRanks.Orange)
-            gameAudio.PlayOrangeSpawnSFX();
-    }
+        [SerializeField] private int index;
+        [SerializeField] private ChipColorRanks chipColorRank;
 
-    private void OnDisable()
-    {
-        
-    }
+        private GridCellsContainer gridCellsContainer;
+        private ChipsContainer chipsContainer;
+        private Draggable draggable;
+        private ChipAnimations chipAnimations;
+        private GameAudio gameAudio;
 
+        public ChipColorRanks ChipColorRank => chipColorRank;
 
-    private void Awake()
-    {
-        draggable = GetComponent<Draggable>();
-        chipAnimations = GetComponent<ChipAnimations>();
-    }
+        public int Index => index;
 
-    public void SetupChip(int gridIndex)
-    {
-        transform.position = gridCellsContainer.GridCells[gridIndex].transform.position;
-        index = gridIndex;
-        OnChipSpawn();
-    }
+        public bool IsBeingDragged => draggable.IsBeingDragged;
 
-    [ContextMenu("Debug Set Position")]
-    public void DebugSetPosition() => SetupChip(Index);
+        public GridCell CurrentGridCell => gridCellsContainer.GridCells[index];
 
-    [Inject]
-    public void Setup(GridCellsContainer gridCellsContainer, ChipsContainer gridItemsContainer, GameAudio gameAudio)
-    {
-        this.gridCellsContainer = gridCellsContainer;
-        this.chipsContainer = gridItemsContainer;
-        this.gameAudio = gameAudio;
-    }
-
-    public void OnChipSpawn()
-    {
-        chipAnimations.ConnectAnimation();
-    }
-
-    public void OnDragStart()
-    {
-        chipAnimations.DragStartAnimation();
-    }
-
-    public void OnDragEnd()
-    {
-        chipAnimations.DragEndAnimation();
-    }
-
-    public class OrangeChipPool : MonoMemoryPool<int, Chip>
-    {
-        protected override void Reinitialize(int gridIndex, Chip item)
+        private void OnEnable()
         {
-            base.Reinitialize(gridIndex, item);
-            item.SetupChip(gridIndex);
+            if (!chipsContainer.IsFirstSpawn && chipColorRank == ChipColorRanks.Orange)
+                gameAudio.PlayOrangeSpawnSFX();
         }
-    }
 
-    public class YellowChipPool : MonoMemoryPool<int, Chip>
-    {
-        protected override void Reinitialize(int gridIndex, Chip item)
+        private void Awake()
         {
-            base.Reinitialize(gridIndex, item);
-            item.SetupChip(gridIndex);
+            draggable = GetComponent<Draggable>();
+            chipAnimations = GetComponent<ChipAnimations>();
         }
-    }
 
-    public class GreenChipPool : MonoMemoryPool<int, Chip>
-    {
-        protected override void Reinitialize(int gridIndex, Chip item)
+        public void SetupChip(int gridIndex)
         {
-            base.Reinitialize(gridIndex, item);
-            item.SetupChip(gridIndex);
+            transform.position = gridCellsContainer.GridCells[gridIndex].transform.position;
+            index = gridIndex;
+            OnChipSpawn();
         }
-    }
 
-    public class BlueChipPool : MonoMemoryPool<int, Chip>
-    {
-        protected override void Reinitialize(int gridIndex, Chip item)
+        [ContextMenu("Debug Set Position")]
+        public void DebugSetPosition() => SetupChip(Index);
+
+        [Inject]
+        public void Setup(GridCellsContainer gridCellsContainer, ChipsContainer gridItemsContainer, GameAudio gameAudio)
         {
-            base.Reinitialize(gridIndex, item);
-            item.SetupChip(gridIndex);
+            this.gridCellsContainer = gridCellsContainer;
+            this.chipsContainer = gridItemsContainer;
+            this.gameAudio = gameAudio;
+        }
+
+        public void OnChipSpawn()
+        {
+            chipAnimations.ConnectAnimation();
+        }
+
+        public void OnDragStart()
+        {
+            chipAnimations.DragStartAnimation();
+        }
+
+        public void OnDragEnd()
+        {
+            chipAnimations.DragEndAnimation();
+        }
+
+        public class OrangeChipPool : MonoMemoryPool<int, Chip>
+        {
+            protected override void Reinitialize(int gridIndex, Chip item)
+            {
+                base.Reinitialize(gridIndex, item);
+                item.SetupChip(gridIndex);
+            }
+        }
+
+        public class YellowChipPool : MonoMemoryPool<int, Chip>
+        {
+            protected override void Reinitialize(int gridIndex, Chip item)
+            {
+                base.Reinitialize(gridIndex, item);
+                item.SetupChip(gridIndex);
+            }
+        }
+
+        public class GreenChipPool : MonoMemoryPool<int, Chip>
+        {
+            protected override void Reinitialize(int gridIndex, Chip item)
+            {
+                base.Reinitialize(gridIndex, item);
+                item.SetupChip(gridIndex);
+            }
+        }
+
+        public class BlueChipPool : MonoMemoryPool<int, Chip>
+        {
+            protected override void Reinitialize(int gridIndex, Chip item)
+            {
+                base.Reinitialize(gridIndex, item);
+                item.SetupChip(gridIndex);
+            }
         }
     }
 }
